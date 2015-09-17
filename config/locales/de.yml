@@ -1,0 +1,4 @@
+# German strings go here for Rails i18n
+de:
+  collapse_all: "Alle zuklappen"
+  expand_all: "Alle aufklappen"
