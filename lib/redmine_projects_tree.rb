@@ -2,11 +2,16 @@ module ProjectsTree
   def self.included(base)
     base.send(:include, InstanceMethods)
     base.class_eval do
-      alias_method_chain :render_project_hierarchy, :projects_tree
+      #alias_method_chain :render_project_hierarchy, :projects_tree
     end
   end
 
   module InstanceMethods
+
+    def render_subproject_hierarchy(project)
+      projects = Project.visible.where("lft > ? AND rgt <= ?",project.lft,project.rgt).sort_by(&:lft)
+      render_project_hierarchy(projects)
+    end
 
     def render_project_hierarchy(projects)
       render_project_nested_lists(projects) do |project|
