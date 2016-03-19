@@ -30,7 +30,6 @@ ul.fancytree-container {
   white-space: nowrap;
   padding: 3px;
   margin: 0;
-  background-color: white;
   border: 0px dotted gray;
   overflow: auto;
   min-height: 0%;
@@ -521,7 +520,7 @@ table.fancytree-ext-columnview span.fancytree-node.fancytree-active {
   background-color: royalblue;
 }
 
-#projects-tree{
-  padding-top: 10px;
+div#projects-tree {
   padding-left: 20px;
+  padding-bottom: 10px;
 }

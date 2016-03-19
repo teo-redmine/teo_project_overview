@@ -31,14 +31,8 @@
 
 <% if @subprojects.any? %>
   <style>
-div#projects-tree h3 { background: url(../images/folder.png) no-repeat 0% 50%; padding-left: 20px; }
+div#subprojects h3 { background: url(../images/folder.png) no-repeat 0% 50%; padding-left: 20px;}
   </style>
-
-<div id="projects-tree" class="box">
-<h3><%=l(:label_subproject_plural)%>:</h3>
-<%= render_subproject_hierarchy(@project) %>
-<a class="expand_projects" href="#"><%= l(:expand_all) %></a>/<a class="collapse_projects" href="#"><%= l(:collapse_all) %></a><br />
-</div>
 
 <% content_for :header_tags do %>
   <%= stylesheet_link_tag 'style_projects_tree', :plugin => 'teo_subprojects_tree' %>
@@ -48,14 +42,23 @@ div#projects-tree h3 { background: url(../images/folder.png) no-repeat 0% 50%; p
   <%= javascript_include_tag 'jquery_fancytree_persist', :plugin => 'teo_subprojects_tree' %>
 <% end %>
 
+<div id="subprojects" class="box">
+<h3><%=l(:label_subproject_plural)%>:</h3>
+<div id="projects-tree">
+<%= render_subproject_hierarchy(@project) %>
+</div>
+<a class="expand_projects" href="#"><%= l(:expand_all) %></a> | <a class="collapse_projects" href="#"><%= l(:collapse_all) %></a><br />
+</div>
+
+
   <script>
   (function() {
-    var projects_tree_ = document.getElementById("projects-tree");
+    var subprojects_ = document.getElementById("subprojects");
     var issues_box_ = document.getElementsByClassName("issues box")[0];
     var members_box_ = document.getElementsByClassName("members box")[0];
     // Inject projects before menu, and dispose old menu container after
     members_box_.parentNode.insertBefore(issues_box_, members_box_);
-    members_box_.parentNode.insertBefore(projects_tree_, issues_box_);
+    members_box_.parentNode.insertBefore(subprojects_, issues_box_);
     //issues_box_.parentNode.removeChild(issues_box_);
     })();
   </script>
