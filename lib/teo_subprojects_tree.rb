@@ -1,9 +1,6 @@
 module TeoSubprojectsTree
   def self.included(base)
     base.send(:include, InstanceMethods)
-    base.class_eval do
-      #alias_method_chain :render_project_hierarchy, :projects_tree
-    end
   end
 
   module InstanceMethods
@@ -45,7 +42,8 @@ module TeoSubprojectsTree
               s << "</ul></li>\n"
             end
           end
-          classes = (ancestors.empty? ? 'root folder expanded' : 'child')
+          #classes = (ancestors.empty? ? 'root folder expanded' : 'child')
+          classes = (ancestors.empty? ? 'root folder ' : 'child')
           s << "<li class='#{classes}'><div class='#{classes}'>"
           #s << h(block_given? ? yield(project) : project.name)
           #s << link_to_project(project, {:only_path => false}, :class => "project") 
@@ -60,11 +58,5 @@ module TeoSubprojectsTree
       s.html_safe
     end
 
-    def render_project_hierarchy_with_projects_tree(projects)
-
-      s = render_project_nested_lists(projects);
-
-      render('tree', :projects_tree => s)
-    end
   end
 end

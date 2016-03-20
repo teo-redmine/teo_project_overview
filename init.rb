@@ -1,7 +1,7 @@
 # Coding: UTF-8
 
 Redmine::Plugin.register :teo_subprojects_tree do
-  name 'Redmine SubProjects Tree plugin'
+  name 'Teo Subprojects Tree plugin'
   author 'Junta de Andalucía'
   description 'Renders the project list as a collapsable jQuery fancytree'
   version '0.0.1'

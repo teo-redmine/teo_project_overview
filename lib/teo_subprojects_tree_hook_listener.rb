@@ -1,6 +1,6 @@
 class TeoSubprojectsTreeHookListener < Redmine::Hook::ViewListener
   render_on :view_projects_show_right, :partial => "projects/subtree"
-  #render_on :view_projects_show_left, :partial => "wiki/content", :locals => {:content => Project.find('si').wiki.find_page(nil).content_for_version(nil)}
+
   def view_projects_show_left(context = {})
     wiki = Project.find(context[:project]).wiki
     page = wiki.find_page(nil) if wiki
@@ -12,7 +12,7 @@ class TeoSubprojectsTreeHookListener < Redmine::Hook::ViewListener
           :locals => context
       })
     else
-      return content_tag("p", "Cree una wiki de proyecto para que aparezca aquí.")
+      return content_tag("p", l(:create_wiki_message))
     end
   end
 end

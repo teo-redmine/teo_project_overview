@@ -43,14 +43,14 @@ div#subprojects h3 { background: url(../images/folder.png) no-repeat 0% 50%; pad
 <% end %>
 
 <div id="subprojects" class="box">
-<h3><%=l(:label_subproject_plural)%>:</h3>
+<h3><%=l(:label_subproject_plural)%></h3>
 <div id="projects-tree">
 <%= render_subproject_hierarchy(@project) %>
 </div>
 <a class="expand_projects" href="#"><%= l(:expand_all) %></a> | <a class="collapse_projects" href="#"><%= l(:collapse_all) %></a><br />
 </div>
 
-
+<% end %>
   <script>
   (function() {
     var subprojects_ = document.getElementById("subprojects");
@@ -62,4 +62,3 @@ div#subprojects h3 { background: url(../images/folder.png) no-repeat 0% 50%; pad
     //issues_box_.parentNode.removeChild(issues_box_);
     })();
   </script>
-<% end %>
