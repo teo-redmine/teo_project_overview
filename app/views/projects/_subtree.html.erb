@@ -4,8 +4,8 @@
       extensions: ["persist"],
       persist: {
         expandLazy: true,
-        overrideSource: false, 
-        store: "auto" 
+        overrideSource: false,
+        store: "auto"
       }
     });
 
@@ -25,7 +25,7 @@
       });
     });
 
-  });  
+  });
 </script>
 
 
@@ -51,14 +51,3 @@ div#subprojects h3 { background: url(../images/folder.png) no-repeat 0% 50%; pad
 </div>
 
 <% end %>
-  <script>
-  (function() {
-    var subprojects_ = document.getElementById("subprojects");
-    var issues_box_ = document.getElementsByClassName("issues box")[0];
-    var members_box_ = document.getElementsByClassName("members box")[0];
-    // Inject projects before menu, and dispose old menu container after
-    members_box_.parentNode.insertBefore(issues_box_, members_box_);
-    members_box_.parentNode.insertBefore(subprojects_, issues_box_);
-    //issues_box_.parentNode.removeChild(issues_box_);
-    })();
-  </script>
