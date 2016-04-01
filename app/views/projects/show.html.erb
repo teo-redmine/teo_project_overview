@@ -31,12 +31,11 @@
     <li><span class="label"><%= custom_field.name %>:</span> <%= formatted %></li>
   <% end %>
   </ul>
-
+  <%= call_hook(:view_projects_show_right_teo, :project => @project) %>
   <%= call_hook(:view_projects_show_left_teo, :project => @project) %>
 </div>
 
 <div class="splitcontentright">
-  <%= call_hook(:view_projects_show_right_teo, :project => @project) %>
   <%= render :partial => 'members_box' %>
 
   <% if @news.any? && authorize_for('news', 'index') %>
@@ -47,35 +46,33 @@
   </div>
   <% end %>
 
-  <% if User.current.allowed_to?(:view_issues, @project) %>
-  <div class="issues box">
-    <h3><%=l(:label_issue_tracking)%></h3>
-    <ul>
-    <% for tracker in @trackers %>
-      <li><%= link_to tracker.name, project_issues_path(@project, :set_filter => 1, :tracker_id => tracker.id) %>:
-          <%= l(:label_x_open_issues_abbr_on_total, :count => @open_issues_by_tracker[tracker].to_i,
-                                                    :total => @total_issues_by_tracker[tracker].to_i) %>
-      </li>
-    <% end %>
-    </ul>
-    <p>
-      <%= link_to l(:label_issue_view_all), project_issues_path(@project, :set_filter => 1) %>
-      <% if User.current.allowed_to?(:view_calendar, @project, :global => true) %>
-        | <%= link_to l(:label_calendar), project_calendar_path(@project) %>
-      <% end %>
-      <% if User.current.allowed_to?(:view_gantt, @project, :global => true) %>
-        | <%= link_to l(:label_gantt), project_gantt_path(@project) %>
-      <% end %>
-    </p>
-  </div>
-  <% end %>
-
   <%= call_hook(:view_projects_show_right, :project => @project) %>
   <%= call_hook(:view_projects_show_left, :project => @project) %>
 </div>
 
 <% content_for :sidebar do %>
   <%= render :partial => 'projects/sidebar' %>
+
+  <% if User.current.allowed_to?(:view_issues, @project) %>
+  <h3><%=l(:label_issue_tracking)%></h3>
+  <ul>
+  <% for tracker in @trackers %>
+    <li><%= link_to tracker.name, project_issues_path(@project, :set_filter => 1, :tracker_id => tracker.id) %>:
+        <%= l(:label_x_open_issues_abbr_on_total, :count => @open_issues_by_tracker[tracker].to_i,
+                                                  :total => @total_issues_by_tracker[tracker].to_i) %>
+    </li>
+  <% end %>
+  </ul>
+  <p>
+    <%= link_to l(:label_issue_view_all), project_issues_path(@project, :set_filter => 1) %>
+    <% if User.current.allowed_to?(:view_calendar, @project, :global => true) %>
+      | <%= link_to l(:label_calendar), project_calendar_path(@project) %>
+    <% end %>
+    <% if User.current.allowed_to?(:view_gantt, @project, :global => true) %>
+      | <%= link_to l(:label_gantt), project_gantt_path(@project) %>
+    <% end %>
+  </p>
+  <% end %>
 <% end %>
 
 <% content_for :header_tags do %>
