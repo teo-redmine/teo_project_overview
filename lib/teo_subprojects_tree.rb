@@ -10,10 +10,7 @@ module TeoSubprojectsTree
       s = ''
       if projects.any?
         ancestors = []
-        original_project = @project
         projects.sort_by(&:lft).each do |project|
-          # set the project environment to please macros.
-          @project = project
           if (ancestors.empty? || project.is_descendant_of?(ancestors.last))
             s << "<ul class='projects #{ ancestors.empty? ? 'root' : nil}'>\n"
           else
@@ -31,7 +28,6 @@ module TeoSubprojectsTree
           ancestors << project
         end
         s << ("</li></ul>\n" * ancestors.size)
-        @project = original_project
       end
       s.html_safe
     end
