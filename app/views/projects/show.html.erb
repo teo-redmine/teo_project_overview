@@ -30,8 +30,8 @@
   <% render_custom_field_values(@project) do |custom_field, formatted| %>
     <li><span class="label"><%= custom_field.name %>:</span> <%= formatted %></li>
   <% end %>
+  <%= render :partial => 'subtree' %>
   </ul>
-  <%= call_hook(:view_projects_show_right_teo, :project => @project) %>
   <%= call_hook(:view_projects_show_left_teo, :project => @project) %>
 </div>
 
@@ -51,8 +51,6 @@
 </div>
 
 <% content_for :sidebar do %>
-  <%= render :partial => 'projects/sidebar' %>
-
   <% if User.current.allowed_to?(:view_issues, @project) %>
   <h3><%=l(:label_issue_tracking)%></h3>
   <ul>
@@ -73,6 +71,7 @@
     <% end %>
   </p>
   <% end %>
+  <%= render :partial => 'projects/sidebar' %>
 <% end %>
 
 <% content_for :header_tags do %>

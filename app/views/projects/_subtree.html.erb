@@ -42,8 +42,9 @@ div#subprojects h3 { background: url(../images/folder.png) no-repeat 0% 50%; pad
   <%= javascript_include_tag 'jquery_fancytree_persist', :plugin => 'teo_subprojects_tree' %>
 <% end %>
 
-<strong><%=l(:label_subproject_plural)%></strong>
-<div class="contextual"><a class="expand_projects" href="#"><%= l(:expand_all) %></a> | <a class="collapse_projects" href="#"><%= l(:collapse_all) %></a></div><br />
+<li><%=l(:label_subproject_plural)%>
+(<a class="expand_projects" href="#"><%= l(:expand_all) %></a> | <a class="collapse_projects" href="#"><%= l(:collapse_all) %></a>)
+</li>
 <div id="projects-tree">
 <%= render_subproject_hierarchy(@project) %>
 </div>
