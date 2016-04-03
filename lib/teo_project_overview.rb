@@ -1,9 +1,19 @@
-module TeoSubprojectsTree
+module TeoProjectOverview
   def self.included(base)
     base.send(:include, InstanceMethods)
   end
 
   module InstanceMethods
+    def render_wiki(project)
+      wiki = project.wiki
+      page = wiki.find_page(nil) if wiki
+      content = page.content_for_version(nil) if page
+      if project.enabled_module(:wiki) && content
+        context = {}
+        context[:content] = content
+        render :partial => 'wiki/content', :locals => context
+      end
+    end
 
     def render_subproject_hierarchy(project)
       projects = Project.visible.where("lft > ? AND rgt <= ?",project.lft,project.rgt).sort_by(&:lft)

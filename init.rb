@@ -1,14 +1,13 @@
 # Coding: UTF-8
 
-Redmine::Plugin.register :teo_subprojects_tree do
-  name 'Teo Subprojects Tree plugin'
+Redmine::Plugin.register :teo_project_overview do
+  name 'Teo Project Overview plugin'
   author 'Junta de Andalucía'
-  description 'Renders the project list as a collapsable jQuery fancytree'
+  description 'Replaces project overview pages'
   version '0.0.1'
   url 'https://github.com/chibacityblues/redmine_projects_tree'
   author_url 'http://www.juntadeandalucia.es'
 end
 
-require 'teo_subprojects_tree'
-require_dependency 'teo_subprojects_tree_hook_listener'
-ProjectsHelper.send(:include, TeoSubprojectsTree)
+require 'teo_project_overview'
+ProjectsHelper.send(:include, TeoProjectOverview)

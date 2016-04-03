@@ -35,11 +35,11 @@ div#projects-tree { padding-left:0px; padding-bottom: 0px;}
   </style>
 
 <% content_for :header_tags do %>
-  <%= stylesheet_link_tag 'style_projects_tree', :plugin => 'teo_subprojects_tree' %>
-  <%= stylesheet_link_tag 'style_fancytree', :plugin => 'teo_subprojects_tree' %>
-  <%= javascript_include_tag 'jquery_fancytree_cookie', :plugin => 'teo_subprojects_tree' %>
-  <%= javascript_include_tag 'jquery_fancytree_min', :plugin => 'teo_subprojects_tree' %>
-  <%= javascript_include_tag 'jquery_fancytree_persist', :plugin => 'teo_subprojects_tree' %>
+  <%= stylesheet_link_tag 'style_projects_tree', :plugin => 'teo_project_overview' %>
+  <%= stylesheet_link_tag 'style_fancytree', :plugin => 'teo_project_overview' %>
+  <%= javascript_include_tag 'jquery_fancytree_cookie', :plugin => 'teo_project_overview' %>
+  <%= javascript_include_tag 'jquery_fancytree_min', :plugin => 'teo_project_overview' %>
+  <%= javascript_include_tag 'jquery_fancytree_persist', :plugin => 'teo_project_overview' %>
 <% end %>
 
 <div class="contextual"><a class="expand_projects" href="#"><%= l(:expand_all) %></a> | <a class="collapse_projects" href="#"><%= l(:collapse_all) %></a></div>

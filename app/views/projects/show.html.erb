@@ -34,7 +34,7 @@
   <div class="wiki wiki-page">
   <%= render :partial => 'subtree' %>
   </div>
-  <%= call_hook(:view_projects_show_left_teo, :project => @project) %>
+  <%= render_wiki(@project) %>
 </div>
 
 <div class="splitcontentright">
