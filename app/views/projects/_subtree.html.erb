@@ -3,6 +3,7 @@
     $("#projects-tree").fancytree({
       extensions: ["persist"],
       persist: {
+        cookiePrefix: "<%= @project.identifier %>",
         expandLazy: true,
         overrideSource: false,
         store: "auto"
